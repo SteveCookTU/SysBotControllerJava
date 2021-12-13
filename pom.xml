@@ -8,6 +8,7 @@
     <artifactId>sysbotcontrollerjava</artifactId>
     <version>1.1-SNAPSHOT</version>
     <name>SysBotControllerJava</name>
+    <packaging>jar</packaging>
 
     <distributionManagement>
         <repository>
@@ -16,6 +17,24 @@
             <url>https://maven.pkg.github.com/SteveCookTU/SysBotControllerJava</url>
         </repository>
     </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
