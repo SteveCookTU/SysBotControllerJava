@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.ezpzstreamz</groupId>
-    <artifactId>SysBotControllerJava</artifactId>
+    <artifactId>sysbotcontrollerjava</artifactId>
     <version>1.0</version>
 
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>GitHub Packages</name>
+            <name>GitHub SteveCookTU Apache Maven Packages</name>
             <url>https://maven.pkg.github.com/SteveCookTU/SysBotControllerJava</url>
         </repository>
     </distributionManagement>
