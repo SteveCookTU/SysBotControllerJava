@@ -8,24 +8,13 @@
     <artifactId>SysBotControllerJava</artifactId>
     <version>1.0</version>
 
-    <profiles>
-        <profile>
+    <distributionManagement>
+        <repository>
             <id>github</id>
-            <activation>
-                <property>
-                    <name>useGitHubPackages</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <distributionManagement>
-                <repository>
-                    <id>github</id>
-                    <name>GitHub Packages</name>
-                    <url>https://maven.pkg.github.com/SteveCookTU/SysBotControllerJava</url>
-                </repository>
-            </distributionManagement>
-        </profile>
-    </profiles>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/SteveCookTU/SysBotControllerJava</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
