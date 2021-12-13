@@ -7,7 +7,7 @@
     <groupId>me.ezpzstreamz</groupId>
     <artifactId>sysbotcontrollerjava</artifactId>
     <version>1.0</version>
-    <name>sysbotcontrollerjava</name>
+    <name>SysBotControllerJava</name>
 
     <distributionManagement>
         <repository>
