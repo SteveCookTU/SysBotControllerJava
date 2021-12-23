@@ -33,6 +33,7 @@ public class SysBotController {
     }
 
     public void disconnect() throws IOException {
+        sendCommand("detachController");
         conn.close();
         conn = null;
         out.close();
