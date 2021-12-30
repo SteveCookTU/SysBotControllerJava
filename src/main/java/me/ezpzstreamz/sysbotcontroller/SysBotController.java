@@ -85,7 +85,7 @@ public class SysBotController {
     public CompletableFuture<Void> click(String button, int sleep) {
         return sendCommand("click " + button).thenRun(() -> {
             try {
-                TimeUnit.SECONDS.sleep(sleep);
+                TimeUnit.MILLISECONDS.sleep(sleep);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -95,7 +95,7 @@ public class SysBotController {
     public CompletableFuture<Void> press(String button, int sleep) {
         return sendCommand("press " + button).thenRun(() -> {
             try {
-                TimeUnit.SECONDS.sleep(sleep);
+                TimeUnit.MILLISECONDS.sleep(sleep);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -105,7 +105,7 @@ public class SysBotController {
     public CompletableFuture<Void> release(String button, int sleep) {
         return sendCommand("release " + button).thenRun(() -> {
             try {
-                TimeUnit.SECONDS.sleep(sleep);
+                TimeUnit.MILLISECONDS.sleep(sleep);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -135,7 +135,7 @@ public class SysBotController {
     public CompletableFuture<Void> setStick(String stick, int x, int y, int sleep) {
         return sendCommand("setStick " + stick + " " + x + " " + y).thenRun(() -> {
             try {
-                TimeUnit.SECONDS.sleep(sleep);
+                TimeUnit.MILLISECONDS.sleep(sleep);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
