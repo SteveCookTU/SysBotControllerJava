@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
+import java.util.concurrent.*;
 
 public class SysBotController {
 
@@ -17,10 +14,16 @@ public class SysBotController {
     protected Socket conn;
     protected PrintWriter out;
     protected BufferedReader in;
+    protected ExecutorService pool;
 
     public SysBotController(String ip, int port) {
         this.ip = ip;
         this.port = port;
+        pool = Executors.newCachedThreadPool(r -> {
+            Thread t = new Thread(r);
+            t.setDaemon(false);
+            return t;
+        });
     }
 
     public void connect() {
@@ -79,7 +82,7 @@ public class SysBotController {
         return CompletableFuture.runAsync(() -> {
             System.out.println(command);
             out.println(command);
-        });
+        }, pool);
     }
 
     public CompletableFuture<Void> click(String button, int sleep) {
@@ -125,7 +128,7 @@ public class SysBotController {
                         e.printStackTrace();
                     }
                     return null;
-                }));
+                }, pool));
     }
 
     public CompletableFuture<Void> poke(String ptr, String data) {
@@ -154,7 +157,7 @@ public class SysBotController {
                 e.printStackTrace();
             }
             return null;
-        }));
+        }, pool));
     }
 
     public CompletableFuture<String> getHeapBase() {
@@ -169,7 +172,7 @@ public class SysBotController {
                 e.printStackTrace();
             }
             return null;
-        }));
+        }, pool));
     }
 
     public CompletableFuture<String> getMainNsoBase() {
@@ -184,7 +187,7 @@ public class SysBotController {
                 e.printStackTrace();
             }
             return null;
-        }));
+        }, pool));
     }
 
     public CompletableFuture<Void> enterCode(String code) {
@@ -198,7 +201,7 @@ public class SysBotController {
                 }
             }
             return command.toString();
-        }).thenCompose(s -> sendCommand("key " + s.trim()));
+        }, pool).thenCompose(s -> sendCommand("key " + s.trim()));
     }
 
     public CompletableFuture<Void> touch(int x, int y) {
